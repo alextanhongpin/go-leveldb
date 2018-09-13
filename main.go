@@ -62,4 +62,13 @@ func main() {
 	if err := iter.Error(); err != nil {
 		log.Fatal(err)
 	}
+
+	s, err := db.SizeOf([]util.Range{
+		util.Range{Start: []byte("a"), Limit: []byte("z")},
+	})
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println("got size:", s, s.Sum())
+
 }
